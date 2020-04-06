@@ -1,0 +1,38 @@
+{
+    "links": [
+        {
+            "id": "specialisme",
+            "name": "Specialisme",
+            "path": "/specialisme"
+        },
+        {
+            "id": "contact",
+            "name": "Contact",
+            "path": "/contact"
+        },
+        {
+            "id": "home",
+            "name": "Home",
+            "path": "/"
+        }
+    ],
+    "contact_details": [
+        {
+            "id": "tel",
+            "label": "Telefoon",
+            "name": "06 39 649 728",
+            "path": "tel: 06 39 649 728"
+        },
+        {
+            "id": "email",
+            "label": "E-mail",
+            "name": "contact@bureau-m.com",
+            "path": "mailto: contact@bureau-m.com"
+        },
+        {
+            "id": "kvk",
+            "label": "KVK",
+            "name": "74525395"
+        }
+    ]
+}

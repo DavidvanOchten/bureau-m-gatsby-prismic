@@ -1,0 +1,47 @@
+@function rem($value, $px-base: $font-size-base) {
+    @return (($value * 1px) / $px-base) * 1rem;
+}
+
+@function grid($mq, $columns, $columns-parent) {
+    $columns-total-narrow: 6;
+    $columns-total-regular: 12;
+    $columns-total-wide: 18;
+
+    @if $mq == 'narrow' {
+        @return 100% / $columns-total-narrow * $columns * ($columns-total-narrow / $columns-parent);
+    } @else if $mq == 'regular' {
+        @return 100% / $columns-total-regular * $columns * ($columns-total-regular / $columns-parent);
+    } @else if $mq == 'wide' {
+        @return 100% / $columns-total-wide * $columns * ($columns-total-wide / $columns-parent);
+    }
+}
+
+// @function grid($mq, $columns, $columns-parent, $extra-space: 0px) {
+//     $columns-total-narrow: 6;
+//     $columns-total-regular: 12;
+//     $columns-total-wide: 18;
+
+//     $gutter-narrow: 0;
+//     $gutter-regular: 0;
+//     $gutter-wide: 0;
+
+//     $pct: 0;
+//     $rem: 0;
+
+//     @if $mq == 'narrow' {
+//         $pct: 100% / $columns-total-narrow * $columns * ($columns-total-narrow / $columns-parent);
+//         $rem: rem($gutter-narrow) * (($columns-parent - $columns) / $columns-parent);
+//     } @else if $mq == 'regular' {
+//         $pct: 100% / $columns-total-regular * $columns * ($columns-total-regular / $columns-parent);
+//         $rem: rem($gutter-regular) * (($columns-parent - $columns) / $columns-parent);
+//     } @else if $mq == 'wide' {
+//         $pct: 100% / $columns-total-wide * $columns * ($columns-total-wide / $columns-parent);
+//         $rem: rem($gutter-wide) * (($columns-parent - $columns) / $columns-parent);
+//     }
+
+//     @if $extra-space == 0px {
+//         @return calc(#{$pct} - #{$rem});
+//     } @else {
+//         @return calc(#{$pct} - #{$rem} + #{rem($extra-space)});
+//     }
+// }

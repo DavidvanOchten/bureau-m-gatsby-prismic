@@ -1,0 +1,17 @@
+.copy-heading {
+    padding: rem($baseline * 6) grid('wide', 1, 18);
+}
+
+.copy-heading__copy {
+    margin-top: rem($baseline * 4);
+    margin-left: grid('wide', 5, 16);
+    letter-spacing: -0.025em;
+}
+
+.copy-heading__heading {
+    width: grid('wide', 8, 16);
+}
+
+.copy-heading__heading-large {
+    width: grid('wide', 14, 16);
+}

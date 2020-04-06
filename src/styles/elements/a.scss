@@ -1,0 +1,22 @@
+a {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        background-color: $color-black;
+        transform-origin: left;
+        transform: scale(0);
+        transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    &:hover {
+        &::after {
+            transform: scale(1);
+        }
+    }
+}

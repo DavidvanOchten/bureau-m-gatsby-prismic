@@ -1,0 +1,45 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+a {
+    display: inline-block;
+    color: currentColor;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+}
+
+button {
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-weight: inherit;
+}
+
+p {
+    margin: 0;
+}
+
+small {
+    font-size: inherit;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}

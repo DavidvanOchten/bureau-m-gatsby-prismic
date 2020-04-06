@@ -1,0 +1,22 @@
+.button-menu {
+    position: relative;
+    height: rem(16);
+    width: rem($baseline);
+}
+
+.button-menu__line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: rem(2);
+    width: 100%;
+    background-color: $color-black;
+
+    &:nth-child(2) {
+        top: 50%;
+    }
+
+    &:nth-child(3) {
+        top: 100%;
+    }
+}

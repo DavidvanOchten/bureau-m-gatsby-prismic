@@ -1,0 +1,8 @@
+
+@include mq-wide {
+    .container {
+        max-width: calc(100% - #{rem($baseline * 6)});
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

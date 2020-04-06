@@ -1,0 +1,29 @@
+$bp-narrow: 300px;
+$bp-regular: 600px;
+$bp-wide: 1200px;
+
+@mixin mq-narrow {
+    @media (min-width: $bp-narrow) {
+        @content;
+    }
+}
+
+@mixin mq-regular {
+    @media (min-width: $bp-regular) {
+        @content;
+    }
+}
+
+@mixin mq-wide {
+    @media (min-width: $bp-wide) {
+        @content;
+    }
+}
+
+@mixin coverParent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}

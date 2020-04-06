@@ -1,0 +1,58 @@
+.accordion {
+    position: relative;
+    padding: rem($baseline * 4) grid('wide', 1, 18);
+}
+
+.accordion__button-toggle {
+    display: inline-flex;
+    justify-content: space-between;
+    width: grid('wide', 6, 18);
+    border-bottom: 1px solid $color-grey;
+    font-size: rem(16);
+    line-height: rem($baseline * 2);
+
+    &::after {
+        content: '-';
+    }
+}
+
+.accordion__content {
+    position: absolute;
+    top: rem($baseline * 4);
+    right: grid('wide', 1, 18);
+    width: grid('wide', 8, 18);
+    font-size: rem(16);
+    line-height: rem($baseline);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+
+    & > * + img {
+        margin-top: rem($baseline * 1.5);
+    }
+
+    & > * + p {
+        margin-top: rem($baseline * 1);
+    }
+
+    & > img + p {
+        margin-top: rem($baseline * 1.5);
+    }
+}
+
+.accordion__list-item {
+    &.is-active {
+        & .accordion__button-toggle {
+            font-weight: 500;
+
+            &::after {
+                content: '+';
+            }
+        }
+
+        & .accordion__content {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}

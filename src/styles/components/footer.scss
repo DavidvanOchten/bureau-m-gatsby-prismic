@@ -1,0 +1,22 @@
+.footer {
+    padding: rem($baseline * 5) rem($baseline * 3) rem($baseline * 2);
+    background-color: $color-grey-light;
+}
+
+.footer__details {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: rem($baseline * 5);
+    font-size: rem(16);
+    letter-spacing: 0;
+    line-height: rem($baseline);
+}
+
+.footer__list {
+    display: flex;
+}
+
+.footer__list-item {
+    margin-right: rem($baseline * 3);
+}
