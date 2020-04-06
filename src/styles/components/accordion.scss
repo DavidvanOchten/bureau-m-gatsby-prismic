@@ -68,7 +68,21 @@
         position: absolute;
         top: rem($baseline * 4);
         right: grid('wide', 1, 18);
+        display: block;
         width: grid('wide', 8, 18);
-        transition: opacity 0.2s linear;
+        padding-top: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+    }
+
+    .accordion__list-item {
+        &.is-active {
+            & .accordion__content {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
     }
 }

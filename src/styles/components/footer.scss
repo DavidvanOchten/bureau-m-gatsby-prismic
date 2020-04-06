@@ -32,6 +32,10 @@
         padding-top: rem($baseline * 5);
     }
 
+    .footer__copyright {
+        margin-top: 0;
+    }
+
     .footer__details {
         flex-direction: row;
         align-items: baseline;
