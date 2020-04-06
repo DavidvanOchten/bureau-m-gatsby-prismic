@@ -1,5 +1,12 @@
 .heading {
-    font-size: rem(67);
+    font-size: rem(42);
     letter-spacing: -0.025em;
-    line-height: rem($baseline * 3);
+    line-height: rem($baseline * 2);
+}
+
+@include mq-wide {
+    .heading {
+        font-size: rem(68);
+        line-height: rem($baseline * 3);
+    }
 }

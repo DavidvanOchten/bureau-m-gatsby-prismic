@@ -40,7 +40,7 @@ const Footer = props => {
                     {contactDetails}
                 </ul>
 
-                <small>©  2020 — Bureau M juridisch advies</small>
+                <small className="footer__copyright">©  2020 — Bureau M juridisch advies</small>
             </div>
         </footer>
     );

@@ -1,12 +1,13 @@
 .accordion {
     position: relative;
-    padding: rem($baseline * 4) grid('wide', 1, 18);
+    padding-top: rem($baseline * 2);
+    padding-bottom: rem($baseline * 2);
 }
 
 .accordion__button-toggle {
     display: inline-flex;
     justify-content: space-between;
-    width: grid('wide', 6, 18);
+    width: 100%;
     border-bottom: 1px solid $color-grey;
     font-size: rem(16);
     line-height: rem($baseline * 2);
@@ -17,14 +18,12 @@
 }
 
 .accordion__content {
-    position: absolute;
-    top: rem($baseline * 4);
-    right: grid('wide', 1, 18);
-    width: grid('wide', 8, 18);
+    display: none;
+    width: 100%;
+    padding-top: rem($baseline);
+    padding-bottom: rem($baseline);
     font-size: rem(16);
     line-height: rem($baseline);
-    visibility: hidden;
-    opacity: 0;
     transition: opacity 0.2s linear;
 
     & > * + img {
@@ -51,8 +50,25 @@
         }
 
         & .accordion__content {
-            visibility: visible;
-            opacity: 1;
+            display: block;
         }
+    }
+}
+
+@include mq-wide {
+    .accordion {
+        padding: rem($baseline * 4) grid('wide', 1, 18);
+    }
+
+    .accordion__button-toggle {
+        width: grid('wide', 6, 16);
+    }
+
+    .accordion__content {
+        position: absolute;
+        top: rem($baseline * 4);
+        right: grid('wide', 1, 18);
+        width: grid('wide', 8, 18);
+        transition: opacity 0.2s linear;
     }
 }

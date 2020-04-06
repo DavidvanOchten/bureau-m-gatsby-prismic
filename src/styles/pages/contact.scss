@@ -1,5 +1,15 @@
+.contact {
+    padding-top: rem($baseline * 2);
+}
+
 .contact__details {
-    padding-right: rem($baseline * 3);
-    padding-bottom: rem($baseline * 5);
-    padding-left: rem($baseline * 3);
+    padding-bottom: rem($baseline * 3);
+}
+
+@include mq-wide {
+    .contact__details {
+        padding-right: rem($baseline * 3);
+        padding-bottom: rem($baseline * 5);
+        padding-left: rem($baseline * 3);
+    }
 }

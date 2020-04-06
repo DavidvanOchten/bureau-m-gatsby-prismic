@@ -1,9 +1,16 @@
 body {
     overflow-x: hidden;
-    font-family: 'neue-haas-unica-light', sans-serif;
     font-family: 'Untitled Sans Test', sans-serif;
     font-weight: 300;
-    line-height: rem(36);
+    font-size: rem(16);
+    line-height: rem($baseline);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+@include mq-wide {
+    body {
+        font-size: rem(26);
+        line-height: rem($baseline * 1.5);
+    }
 }

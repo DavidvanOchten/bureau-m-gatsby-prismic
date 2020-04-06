@@ -2,13 +2,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
-    justify-content: space-between;
     height: 100%;
     width: 100%;
-    padding: rem($baseline * 5) rem($baseline * 3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: rem($baseline * 2) rem($baseline);
     background-color: $color-white;
     visibility: hidden;
     opacity: 0;
@@ -20,6 +19,24 @@
     }
 }
 
-.menu__list-main {
-    text-align: right;
+.menu__list-contact {
+    margin-top: rem($baseline * 2);
+}
+
+@include mq-regular {
+    .menu {
+        padding: rem($baseline * 5) rem($baseline * 3);
+    }
+}
+
+@include mq-wide {
+    .menu {
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .menu__list-main {
+        text-align: right;
+    }
 }

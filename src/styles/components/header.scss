@@ -4,11 +4,11 @@
 }
 
 .header__logo {
-    position: fixed;
-    top: rem($baseline * 2);
-    left: rem($baseline * 2);
+    position: absolute;
+    top: rem($baseline);
+    left: rem($baseline);
     z-index: $z-index-header-logo;
-    width: rem($baseline * 2);
+    width: rem($baseline);
 
     &::after {
         display: none;
@@ -17,7 +17,20 @@
 
 .header__button-menu {
     position: fixed;
-    top: rem($baseline * 2);
-    right: rem($baseline * 2);
+    top: rem($baseline);
+    right: rem($baseline);
     z-index: $z-index-header-menu;
+}
+
+@include mq-wide {
+    .header__logo {
+        top: rem($baseline * 2);
+        left: rem($baseline * 2);
+        width: rem($baseline * 2);
+    }
+
+    .header__button-menu {
+        top: rem($baseline * 2);
+        right: rem($baseline * 2);
+    }
 }

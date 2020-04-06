@@ -1,12 +1,20 @@
 .list-contact__label {
     display: block;
-    font-size: rem(16);
+    font-size: rem(12);
 }
 
 .list-contact__item {
-    line-height: rem(36);
-
     &:not(:first-child) {
         margin-top: rem($baseline);
+    }
+}
+
+@include mq-wide {
+    .list-contact__label {
+        font-size: rem(16);
+    }
+
+    .list-contact__item {
+        line-height: rem(36);
     }
 }

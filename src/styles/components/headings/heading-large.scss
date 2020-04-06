@@ -1,5 +1,13 @@
 .heading-large {
-    font-size: rem(110);
+    font-size: rem(54);
+    hyphens: auto;
     letter-spacing: -0.025em;
-    line-height: rem($baseline * 5);
+    line-height: rem($baseline * 2.5);
+}
+
+@include mq-wide {
+    .heading-large {
+        font-size: rem(110);
+        line-height: rem($baseline * 5);
+    }
 }

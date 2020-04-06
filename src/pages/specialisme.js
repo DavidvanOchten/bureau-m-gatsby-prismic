@@ -15,7 +15,9 @@ export default () => {
             {/* Use gatsby-image: https://www.gatsbyjs.org/packages/gatsby-image/ */}
             <img src="https://bit.ly/2X8rngp" srcSet="https://bit.ly/39LpJUK 800w, https://bit.ly/2X8rngp 1650w, https://bit.ly/2UGoamB 2850w" alt="alt" />
 
-            <Accordion classes="container" />
+            <div className="container">
+                <Accordion />
+            </div>
         </article>
     );
 };

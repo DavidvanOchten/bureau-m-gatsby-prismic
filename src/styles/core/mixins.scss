@@ -1,7 +1,3 @@
-$bp-narrow: 300px;
-$bp-regular: 600px;
-$bp-wide: 1200px;
-
 @mixin mq-narrow {
     @media (min-width: $bp-narrow) {
         @content;

@@ -59,7 +59,7 @@ const Menu = ({ classes }) => {
                 {links}
             </ul>
 
-            <ListContact items={data.contact_details} />
+            <ListContact classes="menu__list-contact" items={data.contact_details} />
         </div>
     );
 };

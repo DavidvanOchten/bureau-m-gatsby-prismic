@@ -1,13 +1,16 @@
 .footer {
-    padding: rem($baseline * 5) rem($baseline * 3) rem($baseline * 2);
+    padding: rem($baseline * 3) rem($baseline) rem($baseline);
     background-color: $color-grey-light;
+}
+
+.footer__copyright {
+    margin-top: rem($baseline * 2);
 }
 
 .footer__details {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-top: rem($baseline * 5);
+    flex-direction: column;
+    margin-top: rem($baseline * 2);
     font-size: rem(16);
     letter-spacing: 0;
     line-height: rem($baseline);
@@ -15,8 +18,32 @@
 
 .footer__list {
     display: flex;
+    flex-direction: column;
 }
 
-.footer__list-item {
-    margin-right: rem($baseline * 3);
+@include mq-regular {
+    .footer {
+        padding: rem($baseline * 3) rem($baseline * 3) rem($baseline * 2);
+    }
+}
+
+@include mq-wide {
+    .footer {
+        padding-top: rem($baseline * 5);
+    }
+
+    .footer__details {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-top: rem($baseline * 5);
+    }
+
+    .footer__list {
+        flex-direction: row;
+    }
+
+    .footer__list-item {
+        margin-right: rem($baseline * 3);
+    }
 }
