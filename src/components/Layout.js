@@ -1,14 +1,14 @@
 import React from 'react';
+import GlobalProvider from '../context/global/GlobalProvider';
 import SEO from './SEO';
 import Header from './Header';
 import Footer from './Footer';
-import GlobalState from '../context/global/GlobalState';
 
 import '../styles/main.scss';
 
 const Layout = ({ children }) => {
     return (
-        <GlobalState>
+        <GlobalProvider>
             <SEO />
             <Header />
 
@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
             </main>
 
             <Footer />
-        </GlobalState>
+        </GlobalProvider>
     );
 };
 

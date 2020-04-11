@@ -12,7 +12,7 @@ export default () => {
             <img src="https://images.unsplash.com/photo-1479293581560-aee98bb24f7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2944&q=80" alt="alt" />
 
             <div className="container">
-                <CopyHeading heading="Meer dan alleen juridisch advies" headingLarge={false} copy="Dankzij een breed netwerk kan Bureau M juridisch advies u bijstaan bij uiteenlopende ruimtelijke vraagstukken. Neem contact op en vraag naar de mogelijkheden." />
+                <CopyHeading heading="Meer dan juridisch advies" headingLarge={false} copy="Dankzij een breed netwerk kan Bureau M juridisch advies u bijstaan bij uiteenlopende ruimtelijke vraagstukken. Neem contact op en vraag naar de mogelijkheden." />
             </div>
         </article>
     );

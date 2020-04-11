@@ -1,16 +1,33 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import GlobalContext from '../context/global/GlobalContext';
 import ListContact from '../components/lists/ListContact';
 
 // TODO: Remove dummy data
-import data from '../data.json';
+import content from '../data/content.json';
 // Use staticQuery?
 
 const Menu = ({ classes }) => {
-    const refMenu = useRef();
+    const refs = {
+        menu: useRef()
+    };
+
     const classNames = `${classes ? classes + ' ' : ''}menu`;
     const { menuOpen, setMenuOpen } = useContext(GlobalContext);
+
+    const _open = useCallback(() => {
+        document.body.style.overflow = 'hidden';
+        refs.menu.current.classList.add('is-open');
+
+        }, [refs.menu]
+    );
+
+    const _close = useCallback(() => {
+        document.body.style.overflow = '';
+        refs.menu.current.classList.remove('is-open');
+
+        }, [refs.menu]
+    );
 
     useEffect(() => {
         (menuOpen)
@@ -28,38 +45,26 @@ const Menu = ({ classes }) => {
             return () => window.removeEventListener('keyup', _keyUpHandler);
         }
 
-    }, [menuOpen, setMenuOpen]);
-
-    const _open = () => {
-        document.body.style.overflow = 'hidden';
-        refMenu.current.classList.add('is-open');
-    };
-
-    const _close = () => {
-        document.body.style.overflow = '';
-        refMenu.current.classList.remove('is-open');
-    };
+    }, [menuOpen, setMenuOpen, _open, _close]);
 
     const _clickHandler = () => {
         setMenuOpen(false);
         _close();
     };
 
-    const links = data.links.map((link, i) => (
-        <li key={link.id}>
-            <Link className="heading-large" to={link.path} onClick={_clickHandler}>
-                {link.name}
-            </Link>
-        </li>
-    ));
-
     return (
-        <div className={classNames} ref={refMenu}>
+        <div className={classNames} ref={refs.menu}>
             <ul className="menu__list-main">
-                {links}
+                {content.links.map((link, i) => (
+                    <li key={link.id}>
+                        <Link className="heading-large" to={link.path} onClick={_clickHandler}>
+                            {link.name}
+                        </Link>
+                    </li>
+                ))}
             </ul>
 
-            <ListContact classes="menu__list-contact" items={data.contact_details} />
+            <ListContact classes="menu__list-contact" items={content.contact_details} />
         </div>
     );
 };
