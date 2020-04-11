@@ -21,14 +21,20 @@ const Accordion = ({ classes }) => {
         const _updateHeight = entry => {
             if (entry.contentRect.height > maxHeight) {
                 maxHeight = entry.contentRect.height;
-            }
 
-            setMinHeight(maxHeight);
+                setMinHeight(maxHeight);
+            }
         };
 
         if (!observer) {
             setObserver(createResizeObserver(content.current, _updateHeight));
         }
+
+        return () => {
+            if (observer) {
+                observer.disconnect();
+            }
+        };
 
     }, [observer, setObserver]);
 

@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import { Link } from 'gatsby';
 
-// TODO: Remove dummy data
-import data from '../data/content.json';
-
 const Footer = props => {
+    const { menuLinks, contactDetails } = useSiteMetadata();
+
     return (
         <footer className="footer">
             <ul>
-                {data.links.map((link, index) => (
+                {menuLinks.map((link, index) => (
                     <li key={index}>
                         <Link className="heading" to={link.path}>
                             {link.name}
@@ -19,7 +19,7 @@ const Footer = props => {
 
             <div className="footer__details">
                 <ul className="footer__list">
-                    {data.contact_details.map((item, index) => (
+                    {contactDetails.map((item, index) => (
                         <li className="footer__list-item" key={index}>
                             {
                                 (item.path) ? (

@@ -1,15 +1,13 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import { gsap } from 'gsap';
 import GlobalContext from '../context/global/GlobalContext';
 import ListContact from '../components/lists/ListContact';
 
-// TODO: Remove dummy data
-import data from '../data/content.json';
-// Use staticQuery?
-
 const Menu = ({ classes }) => {
     const { menuOpen, setMenuOpen } = useContext(GlobalContext);
+    const { menuLinks, contactDetails } = useSiteMetadata();
 
     const classNames = `${(classes) ? classes + ' ' : ''}menu`;
 
@@ -64,7 +62,7 @@ const Menu = ({ classes }) => {
     return (
         <div className={classNames} ref={menu}>
             <ul className="menu__list-main">
-                {data.links.map((link, index) => (
+                {menuLinks.map((link, index) => (
                     <li className="menu__list-item-main" key={index} ref={ref => listMain.current[index] = ref}>
                         <Link className="heading-large" to={link.path} onClick={_clickHandler}>
                             {link.name}
@@ -74,7 +72,7 @@ const Menu = ({ classes }) => {
             </ul>
 
             <div className="menu__list-contact" ref={listContact}>
-                <ListContact items={data.contact_details}/>
+                <ListContact items={contactDetails}/>
             </div>
         </div>
     );
