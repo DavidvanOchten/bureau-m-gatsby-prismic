@@ -1,8 +1,8 @@
 import React from 'react';
 
 const CopyHeading = ({ classes, heading, headingLarge, copy }) => {
-    const classNames = `${classes ? classes + ' ' : ''}copy-heading`;
-    const largeSuffix = headingLarge ? '-large': '';
+    const classNames = `${(classes) ? classes + ' ' : ''}copy-heading`;
+    const largeSuffix = (headingLarge) ? '-large': '';
 
     return (
         <section className={classNames}>

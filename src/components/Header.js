@@ -8,7 +8,11 @@ import ButtonMenu from './buttons/ButtonMenu';
 const Header = props => {
     const { menuOpen, setMenuOpen } = useContext(GlobalContext);
 
-    const _clickHandler = () => menuOpen && setMenuOpen(false);
+    const _clickHandler = () => {
+        if (menuOpen) {
+            setMenuOpen(false);
+        }
+    };
 
     return (
         <header className="header">

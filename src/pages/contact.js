@@ -3,7 +3,7 @@ import CopyHeading from '../components/copy/CopyHeading';
 import ListContact from '../components/lists/ListContact';
 
 // TODO: Remove dummy data
-import content from '../data/content.json';
+import data from '../data/content.json';
 
 export default () => {
     return (
@@ -13,7 +13,7 @@ export default () => {
             </div>
 
             <div className="container">
-                <ListContact classes="contact__details" items={content.contact_details} />
+                <ListContact classes="contact__details" items={data.contact_details} />
             </div>
         </article>
     );

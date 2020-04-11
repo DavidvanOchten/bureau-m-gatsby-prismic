@@ -4,7 +4,7 @@
 }
 
 .header__logo {
-    position: absolute;
+    position: fixed;
     top: rem($baseline);
     left: rem($baseline);
     z-index: $z-index-header-logo;

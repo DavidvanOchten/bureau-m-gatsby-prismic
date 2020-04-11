@@ -2,20 +2,18 @@ import React, { useRef, useEffect, useState } from 'react';
 import { createResizeObserver } from '../utils/createResizeObserver';
 
 // TODO: Remove dummy data
-import content from '../data/content.json';
+import data from '../data/content.json';
 
 const Accordion = ({ classes }) => {
-    const refs = {
-        accordion: useRef(),
-        content: [],
-        items: []
-    };
-
     const [observer, setObserver] = useState(null);
     const [minHeight, setMinHeight] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const classNames = `${classes ? classes + ' ' : ''}accordion`;
+    const classNames = `${(classes) ? classes + ' ' : ''}accordion`;
+
+    const el = useRef();
+    const content = useRef([]);
+    const items = useRef([]);
 
     useEffect(() => {
         let maxHeight = 0;
@@ -29,30 +27,28 @@ const Accordion = ({ classes }) => {
         };
 
         if (!observer) {
-            setObserver(createResizeObserver(refs.content, _updateHeight));
+            setObserver(createResizeObserver(content.current, _updateHeight));
         }
 
-    }, [observer, setObserver, refs.content]);
+    }, [observer, setObserver]);
 
     useEffect(() => {
-        refs.items.map(item => item.classList.remove('is-active'));
-        refs.items[activeIndex].classList.add('is-active');
-    }, [activeIndex, refs.items]);
+        items.current.map(item => item.classList.remove('is-active'));
+        items.current[activeIndex].classList.add('is-active');
+    }, [activeIndex]);
 
     const _clickHandler = index => {
         setActiveIndex(index);
     };
 
-    console.log('render');
-
     return (
-        <div className={classNames} ref={refs.accordion}>
+        <div className={classNames} ref={el}>
             <ul className="accordion__list" style={{ minHeight: `${minHeight}px` }}>
-                {content.accordion.map((item, index) => (
-                    <li className="accordion__list-item" key={index} ref={ref => refs.items.push(ref)}>
+                {data.accordion.map((item, index) => (
+                    <li className="accordion__list-item" key={index} ref={ref => items.current[index] = ref}>
                         <button className="accordion__button-toggle" onClick={() => _clickHandler(index)}>{item.title}</button>
 
-                        <div className="accordion__content" ref={ref => refs.content.push(ref)} dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                        <div className="accordion__content" ref={ref => content.current[index] = ref} dangerouslySetInnerHTML={{ __html: item.content }}></div>
                     </li>
                 ))}
             </ul>

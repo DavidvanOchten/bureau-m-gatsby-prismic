@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 
 const ListContact = ({ items, classes }) => {
-    const classNames = `${classes ? classes + ' ' : ''}list-contact`;
+    const classNames = `${(classes) ? classes + ' ' : ''}list-contact`;
 
     return (
         <ul className={classNames}>
-            {items.map(item => (
-                <li className="list-contact__item" key={item.id}>
+            {items.map((item, index) => (
+                <li className="list-contact__item" key={index}>
                     {
                         (item.path) ? (
                             <Fragment>

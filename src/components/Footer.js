@@ -2,23 +2,25 @@ import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
 
 // TODO: Remove dummy data
-import content from '../data/content.json';
+import data from '../data/content.json';
 
 const Footer = props => {
     return (
         <footer className="footer">
             <ul>
-                {content.links.map(link => (
-                    <li key={link.id}>
-                        <Link className="heading" to={link.path}>{link.name}</Link>
+                {data.links.map((link, index) => (
+                    <li key={index}>
+                        <Link className="heading" to={link.path}>
+                            {link.name}
+                        </Link>
                     </li>
                 ))}
             </ul>
 
             <div className="footer__details">
                 <ul className="footer__list">
-                    {content.contact_details.map(item => (
-                        <li className="footer__list-item" key={item.id}>
+                    {data.contact_details.map((item, index) => (
+                        <li className="footer__list-item" key={index}>
                             {
                                 (item.path) ? (
                                     <Fragment>

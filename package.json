@@ -18,6 +18,7 @@
     "gatsby-plugin-layout": "^1.2.1",
     "gatsby-plugin-react-helmet": "^3.2.1",
     "gatsby-plugin-sass": "^2.2.1",
+    "gsap": "^3.2.6",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

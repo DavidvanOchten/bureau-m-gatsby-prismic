@@ -12,15 +12,17 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.2s linear;
-
-    &.is-open {
-        visibility: visible;
-        opacity: 1;
-    }
 }
 
 .menu__list-contact {
     margin-top: rem($baseline * 2);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.menu__list-item-main {
+    visibility: hidden;
+    opacity: 0;
 }
 
 @include mq-regular {
