@@ -1,4 +1,6 @@
-// dotenv for API key Prismic
+require('dotenv').config({
+    path: '.env',
+});
 
 module.exports = {
     siteMetadata: {
@@ -37,13 +39,21 @@ module.exports = {
         ]
     },
     plugins: [
-        'gatsby-plugin-react-helmet',
-        'gatsby-plugin-sass',
+        {
+            resolve: 'gatsby-source-prismic-graphql',
+            options: {
+                repositoryName: 'bureau-m',
+                accessToken: process.env.API_KEY,
+                lang: 'nl-nl'
+            }
+        },
         {
             resolve: 'gatsby-plugin-layout',
             options: {
                 component: require.resolve('./src/components/Layout.js'),
             },
         },
+        'gatsby-plugin-react-helmet',
+        'gatsby-plugin-sass'
     ],
 };
