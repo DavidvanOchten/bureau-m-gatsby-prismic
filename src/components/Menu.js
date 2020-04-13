@@ -1,26 +1,24 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
-import { Link } from 'gatsby';
-import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import { gsap } from 'gsap';
-import GlobalContext from '../context/global/GlobalContext';
+import LinkPrismic from './links/LinkPrismic';
+import GlobalContext from '../stores/global/GlobalContext';
 import ListContact from '../components/lists/ListContact';
 
 const Menu = ({ classes }) => {
-    const { menuOpen, setMenuOpen } = useContext(GlobalContext);
-    const { menuLinks, contactDetails } = useSiteMetadata();
-
-    const classNames = `${(classes) ? classes + ' ' : ''}menu`;
+    const { globals, menuOpen, setMenuOpen } = useContext(GlobalContext);
 
     const menu = useRef();
     const tl = useRef();
     const listMain = useRef([]);
     const listContact = useRef();
 
+    const classNames = `${(classes) ? classes + ' ' : ''}menu`;
+
     useEffect(() => {
         tl.current = gsap.timeline({ paused: true });
-        tl.current.to(menu.current, 0.5, { autoAlpha: 1, ease: 'linear' });
+        tl.current.to(menu.current, 0.4, { autoAlpha: 1, ease: 'none' });
         tl.current.staggerFromTo(listMain.current, 0.8, { y: 50 }, { y: 0, autoAlpha: 1, ease: 'power3.inOut', stagger: 0.08 });
-        tl.current.to(listContact.current, 0.4, { autoAlpha: 1, ease: 'linear', delay: -0.2 });
+        tl.current.to(listContact.current, 0.4, { autoAlpha: 1, ease: 'none', delay: -0.2 });
 
     }, []);
 
@@ -62,17 +60,15 @@ const Menu = ({ classes }) => {
     return (
         <div className={classNames} ref={menu}>
             <ul className="menu__list-main">
-                {menuLinks.map((link, index) => (
+                {globals.menuLinks.map((link, index) => (
                     <li className="menu__list-item-main" key={index} ref={ref => listMain.current[index] = ref}>
-                        <Link className="heading-large" to={link.path} onClick={_clickHandler}>
-                            {link.name}
-                        </Link>
+                        <LinkPrismic classes="heading-large" to={link.link._meta.type} text={link.link_text[0].text} clickHandler={_clickHandler} />
                     </li>
                 ))}
             </ul>
 
             <div className="menu__list-contact" ref={listContact}>
-                <ListContact items={contactDetails}/>
+                <ListContact items={globals.contactDetails}/>
             </div>
         </div>
     );

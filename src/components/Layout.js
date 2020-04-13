@@ -1,5 +1,5 @@
 import React from 'react';
-import GlobalProvider from '../context/global/GlobalProvider';
+import GlobalProvider from '../stores/global/GlobalProvider';
 import SEO from './SEO';
 import Header from './Header';
 import Footer from './Footer';

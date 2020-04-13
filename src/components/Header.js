@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
-import GlobalContext from '../context/global/GlobalContext';
+import GlobalContext from '../stores/global/GlobalContext';
 import Logo from './Logo';
 import Menu from './Menu';
 import ButtonMenu from './buttons/ButtonMenu';

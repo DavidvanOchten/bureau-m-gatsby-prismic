@@ -1,36 +1,35 @@
-import React, { Fragment } from 'react';
-import { useSiteMetadata } from '../hooks/useSiteMetadata';
-import { Link } from 'gatsby';
+import React, { useContext, Fragment } from 'react';
+import LinkPrismic from './links/LinkPrismic';
+import GlobalContext from '../stores/global/GlobalContext';
+import LinkExternal from '../components/links/LinkExternal';
 
 const Footer = props => {
-    const { menuLinks, contactDetails } = useSiteMetadata();
+    const { globals } = useContext(GlobalContext);
 
     return (
         <footer className="footer">
             <ul>
-                {menuLinks.map((link, index) => (
+                {globals.menuLinks.map((link, index) => (
                     <li key={index}>
-                        <Link className="heading" to={link.path}>
-                            {link.name}
-                        </Link>
+                        <LinkPrismic classes="heading" to={link.link._meta.type} text={link.link_text[0].text} />
                     </li>
                 ))}
             </ul>
 
             <div className="footer__details">
                 <ul className="footer__list">
-                    {contactDetails.map((item, index) => (
+                    {globals.contactDetails.map((item, index) => (
                         <li className="footer__list-item" key={index}>
                             {
-                                (item.path) ? (
+                                (item.link) ? (
                                     <Fragment>
-                                        <span>{item.label}: </span>
-                                        <a href={item.path}>{item.name}</a>
+                                        <span>{item.link_label[0].text}: </span>
+                                        <LinkExternal to={item.link} text={item.link_text[0].text} />
                                     </Fragment>
                                 ) : (
                                     <Fragment>
-                                        <span>{item.label}: </span>
-                                        <span>{item.name}</span>
+                                        <span>{item.link_label[0].text}: </span>
+                                        <span>{item.link_text[0].text}</span>
                                     </Fragment>
                                 )
                             }

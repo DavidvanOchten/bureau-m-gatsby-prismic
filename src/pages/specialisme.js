@@ -1,23 +1,56 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { RichText } from 'prismic-reactjs';
+import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
-import CopyHeading from '../components/copy/CopyHeading';
 import Accordion from '../components/Accordion';
+import Slices from '../components/Slices';
 
-export default () => {
+export default ({ data }) => {
+    const doc = data.prismic.allSpecialisms.edges.slice(0, 1).pop();
+    const { seo_title, seo_description, body } = doc.node;
+
     return (
-        <article className="specialism">
-            <SEO title="Specialisme — Bureau M" description="Specialism Bureau M" />
+        <Fragment>
+            <SEO title={RichText.asText(seo_title)} description={RichText.asText(seo_description)} />
 
-            <div className="container">
-                <CopyHeading heading="Omgevingsrecht" headingLarge={true} copy="Bureau M juridisch advies is gespecialiseerd in het omgevingsrecht. Dit rechtsgebied omvat het geheel aan wet- en regelgeving dat betrekking heeft op de fysieke leefomgeving. Geadviseerd wordt over de volgende onderwerpen." />
-            </div>
+            <article className="specialism">
+                <Slices items={body} />
 
-            {/* Use gatsby-image: https://www.gatsbyjs.org/packages/gatsby-image/ */}
-            <img src="https://bit.ly/2X8rngp" srcSet="https://bit.ly/39LpJUK 800w, https://bit.ly/2X8rngp 1650w, https://bit.ly/2UGoamB 2850w" alt="alt" />
-
-            <div className="container">
-                <Accordion />
-            </div>
-        </article>
+                <div className="container">
+                    <Accordion />
+                </div>
+            </article>
+        </Fragment>
     );
 };
+
+export const query = graphql`
+    query {
+        prismic {
+            allSpecialisms {
+                edges {
+                    node {
+                        seo_title
+                        seo_description
+                        body {
+                            ... on PRISMIC_SpecialismBodyTitel_met_tekst {
+                                type
+                                primary {
+                                    heading
+                                    heading_large
+                                    copy
+                                }
+                            }
+                            ... on PRISMIC_SpecialismBodyAfbeelding {
+                                type
+                                primary {
+                                    image
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;

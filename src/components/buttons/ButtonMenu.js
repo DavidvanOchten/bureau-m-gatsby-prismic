@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import GlobalContext from '../../context/global/GlobalContext';
+import GlobalContext from '../../stores/global/GlobalContext';
 
 const ButtonMenu = ({ classes }) => {
     const { menuOpen, setMenuOpen } = useContext(GlobalContext);
