@@ -1,11 +1,12 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import { gsap } from 'gsap';
 import LinkPrismic from './links/LinkPrismic';
 import GlobalContext from '../stores/global/GlobalContext';
 import ListContact from '../components/lists/ListContact';
 
-const Menu = ({ classes }) => {
-    const { globals, menuOpen, setMenuOpen } = useContext(GlobalContext);
+const Menu = ({ classes, menuLinks, contactDetails }) => {
+    const { menuOpen, setMenuOpen } = useContext(GlobalContext);
 
     const menu = useRef();
     const tl = useRef();
@@ -60,7 +61,7 @@ const Menu = ({ classes }) => {
     return (
         <div className={classNames} ref={menu}>
             <ul className="menu__list-main">
-                {globals.menuLinks.map((link, index) => (
+                {menuLinks.map((link, index) => (
                     <li className="menu__list-item-main" key={index} ref={ref => listMain.current[index] = ref}>
                         <LinkPrismic classes="heading-large" to={link.link._meta.type} text={link.link_text[0].text} clickHandler={_clickHandler} />
                     </li>
@@ -68,10 +69,73 @@ const Menu = ({ classes }) => {
             </ul>
 
             <div className="menu__list-contact" ref={listContact}>
-                <ListContact items={globals.contactDetails}/>
+                <ListContact items={contactDetails}/>
             </div>
         </div>
     );
 };
 
-export default Menu;
+// export default Menu;
+
+const query = graphql`
+    query {
+        prismic {
+            allGlobalss {
+                edges {
+                    node {
+                        contact_details {
+                            link_label
+                            link_text
+                            link {
+                                _linkType
+                                ... on PRISMIC__ExternalLink {
+                                    url
+                                }
+                            }
+                        }
+                        menu {
+                            link {
+                                _linkType
+                                ... on PRISMIC_Home {
+                                    type
+                                    seo_title
+                                    _meta {
+                                        type
+                                        uid
+                                    }
+                                }
+                                ... on PRISMIC_Contact {
+                                    heading
+                                    copy
+                                    _meta {
+                                        type
+                                        uid
+                                    }
+                                }
+                                ... on PRISMIC_Specialism {
+                                    type
+                                    seo_title
+                                    _meta {
+                                        type
+                                        uid
+                                    }
+                                }
+                            }
+                            link_text
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;
+
+// https://github.com/birkir/gatsby-source-prismic-graphql/issues/77
+export default props => (
+    <StaticQuery
+        query={`${query}`}
+        render={({ prismic }) => (
+            <Menu menuLinks={prismic.allGlobalss.edges[0].node.menu} contactDetails={prismic.allGlobalss.edges[0].node.contact_details} {...props} />
+        )}
+    />
+);
