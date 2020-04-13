@@ -1,22 +1,24 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+// import { useStaticQuery, graphql } from 'gatsby';
 
 const SEO = ({ title, description }) => {
-    const { site } = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                    title
-                    description
-                    author
-                }
-            }
-        }
-    `);
+    // const { site } = useStaticQuery(graphql`
+    //     query {
+    //         site {
+    //             siteMetadata {
+    //                 title
+    //                 description
+    //                 author
+    //             }
+    //         }
+    //     }
+    // `);
 
-    const metaTitle = title || site.siteMetadata.title;
-    const metaDescription = description || site.siteMetadata.description;
+    // const metaTitle = title || site.siteMetadata.title;
+    // const metaDescription = description || site.siteMetadata.description;
+    const metaTitle = title;
+    const metaDescription = description;
 
     return (
         <Helmet
@@ -45,7 +47,7 @@ const SEO = ({ title, description }) => {
                 },
                 {
                     name: 'twitter:creator',
-                    content: site.siteMetadata.author,
+                    // content: site.siteMetadata.author,
                 },
                 {
                     name: 'twitter:title',
