@@ -1,6 +1,6 @@
 import React from 'react';
 import CopyHeading from '../components/copy/CopyHeading';
-// import Accordion from '../components/Accordion';
+import Accordion from '../components/Accordion';
 import Image from '../components/images/Image';
 
 const Slices = ({ items }) => {
@@ -20,6 +20,13 @@ const Slices = ({ items }) => {
 
                 return (
                     <Image {...image} key={index} />
+                );
+
+            case 'accordion':
+                return (
+                    <div className="container" key={index}>
+                        <Accordion data={slice.fields} />
+                    </div>
                 );
 
             default:

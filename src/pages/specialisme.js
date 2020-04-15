@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { RichText } from 'prismic-reactjs';
 import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
-import Accordion from '../components/Accordion';
 import Slices from '../components/Slices';
 
 export default ({ data }) => {
@@ -15,10 +14,6 @@ export default ({ data }) => {
 
             <article className="specialism">
                 <Slices items={body} />
-
-                <div className="container">
-                    <Accordion />
-                </div>
             </article>
         </Fragment>
     );
@@ -45,6 +40,13 @@ export const query = graphql`
                                 type
                                 primary {
                                     image
+                                }
+                            }
+                            ... on PRISMIC_SpecialismBodyAccordion {
+                                type
+                                fields {
+                                    text
+                                    title
                                 }
                             }
                         }

@@ -1,10 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { createResizeObserver } from '../utils/createResizeObserver';
 
-// TODO: Remove dummy data
-import data from '../data/content.json';
-
-const Accordion = ({ classes }) => {
+const Accordion = ({ classes, data }) => {
     const [observer, setObserver] = useState(null);
     const [minHeight, setMinHeight] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -50,11 +47,30 @@ const Accordion = ({ classes }) => {
     return (
         <div className={classNames} ref={el}>
             <ul className="accordion__list" style={{ minHeight: `${minHeight}px` }}>
-                {data.accordion.map((item, index) => (
+                {data.map((item, index) => (
                     <li className="accordion__list-item" key={index} ref={ref => items.current[index] = ref}>
-                        <button className="accordion__button-toggle" onClick={() => _clickHandler(index)}>{item.title}</button>
+                        <button className="accordion__button-toggle" onClick={() => _clickHandler(index)}>
+                            {item.title[0].text}
+                        </button>
 
-                        <div className="accordion__content" ref={ref => content.current[index] = ref} dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                        <div className="accordion__content" ref={ref => content.current[index] = ref}>
+                            {item.text.map((item, index) => {
+                                switch (item.type) {
+                                    case 'paragraph':
+                                        return (
+                                            <p key={index}>{item.text}</p>
+                                        );
+
+                                    case 'image':
+                                        return (
+                                            <img src={item.url} alt={item.alt} key={index} />
+                                        );
+
+                                    default:
+                                        return null;
+                                }
+                            })}
+                        </div>
                     </li>
                 ))}
             </ul>
