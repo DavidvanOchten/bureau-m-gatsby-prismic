@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { RichText } from 'prismic-reactjs';
+import { linkResolver } from '../utils/linkResolver';
 import { createResizeObserver } from '../utils/createResizeObserver';
 
 const Accordion = ({ classes, data }) => {
@@ -54,22 +56,7 @@ const Accordion = ({ classes, data }) => {
                         </button>
 
                         <div className="accordion__content" ref={ref => content.current[index] = ref}>
-                            {item.text.map((item, index) => {
-                                switch (item.type) {
-                                    case 'paragraph':
-                                        return (
-                                            <p key={index}>{item.text}</p>
-                                        );
-
-                                    case 'image':
-                                        return (
-                                            <img src={item.url} alt={item.alt} key={index} />
-                                        );
-
-                                    default:
-                                        return null;
-                                }
-                            })}
+                            {RichText.render(item.text, linkResolver)}
                         </div>
                     </li>
                 ))}

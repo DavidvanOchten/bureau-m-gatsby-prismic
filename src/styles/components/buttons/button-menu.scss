@@ -2,6 +2,22 @@
     position: relative;
     height: rem(16);
     width: rem($baseline);
+
+    &.is-active {
+        & .button-menu__line {
+            &:nth-child(1) {
+                transform: translate3d(0, 8px, 0) rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:nth-child(3) {
+                transform: translate3d(0, -8px, 0) rotate(-45deg);
+            }
+        }
+    }
 }
 
 .button-menu__line {

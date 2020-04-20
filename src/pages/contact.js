@@ -5,6 +5,11 @@ import ListContact from '../components/lists/ListContact';
 
 export default ({ data }) => {
     const doc = data.prismic.allContacts.edges.slice(0, 1).pop();
+
+    if (!doc) {
+        return null;
+    }
+
     const contactDetails = data.prismic.allGlobalss.edges[0].node.contact_details;
     const { heading, copy } = doc.node;
 

@@ -37,6 +37,14 @@
     & > img + p {
         margin-top: rem($baseline * 1.5);
     }
+
+    & a {
+        text-decoration: underline;
+
+        &::after {
+            display: none;
+        }
+    }
 }
 
 .accordion__list-item {

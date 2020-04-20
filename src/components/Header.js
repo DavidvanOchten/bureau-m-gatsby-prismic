@@ -16,7 +16,7 @@ const Header = props => {
 
     return (
         <header className="header">
-            <Link className="header__logo" to="/" onClick={_clickHandler}>
+            <Link className="header__logo" to="/" onClick={_clickHandler} aria-label="Bureau M">
                 <Logo />
             </Link>
 

@@ -6,6 +6,11 @@ import Slices from '../components/Slices';
 
 export default ({ data }) => {
     const doc = data.prismic.allSpecialisms.edges.slice(0, 1).pop();
+
+    if (!doc) {
+        return null;
+    }
+
     const { seo_title, seo_description, body } = doc.node;
 
     return (

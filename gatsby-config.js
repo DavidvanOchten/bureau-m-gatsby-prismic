@@ -14,13 +14,15 @@ module.exports = {
             options: {
                 repositoryName: 'bureau-m',
                 accessToken: process.env.API_KEY,
+                path: '/preview',
+                previews: true,
                 lang: 'nl-nl'
             }
         },
         {
             resolve: 'gatsby-plugin-layout',
             options: {
-                component: require.resolve('./src/components/Layout.js'),
+                component: require.resolve('./src/layouts/index.js'),
             },
         },
         'gatsby-plugin-react-helmet',
