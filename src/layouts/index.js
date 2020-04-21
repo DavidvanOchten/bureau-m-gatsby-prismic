@@ -19,6 +19,7 @@ const Layout = ({ children }) => {
             <Footer />
 
             {/* Enables Prismic previews */}
+            {/* <script async defer src='//static.cdn.prismic.io/prismic.js?repo=bureau-m&new=true'></script> */}
             <script dangerouslySetInnerHTML={{ __html:`window.prismic = { endpoint: 'https://bureau-m.cdn.prismic.io/api/v2' };` }} />
             <script type="text/javascript" src="https://static.cdn.prismic.io/prismic.min.js?new=true"></script>
         </GlobalProvider>

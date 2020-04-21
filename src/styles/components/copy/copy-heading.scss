@@ -1,6 +1,7 @@
 .copy-heading {
     padding-top: rem($baseline * 3);
     padding-bottom: rem($baseline * 3);
+    overflow-x: hidden;
 }
 
 .copy-heading__copy {

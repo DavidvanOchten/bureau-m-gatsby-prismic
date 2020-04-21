@@ -50,7 +50,7 @@
 .accordion__list-item {
     &.is-active {
         & .accordion__button-toggle {
-            font-weight: 500;
+            font-family: 'untitled-sans-web-medium', sans-serif;;
 
             &::after {
                 content: '+';
