@@ -44,6 +44,11 @@ const Accordion = ({ classes, data }) => {
 
     const _clickHandler = index => {
         setActiveIndex(index);
+
+        window.scrollTo({
+            behavior: 'smooth',
+            top: el.current.offsetTop
+        });
     };
 
     return (
