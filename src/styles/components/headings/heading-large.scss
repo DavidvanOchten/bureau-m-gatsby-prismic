@@ -3,7 +3,6 @@
     hyphens: auto;
     letter-spacing: -0.025em;
     line-height: rem($baseline * 2.5);
-    word-break: break-word;
 }
 
 @include mq-wide {
