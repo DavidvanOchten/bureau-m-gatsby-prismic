@@ -21,8 +21,11 @@
     opacity: 0;
 }
 
-.menu__list-item-main {
+.menu__list-main {
     margin-top: auto;
+}
+
+.menu__list-item-main {
     visibility: hidden;
     opacity: 0;
 }
