@@ -1,7 +1,9 @@
 import React from 'react';
+import { RichText } from 'prismic-reactjs';
 import { graphql } from 'gatsby';
 import CopyHeading from '../components/copy/CopyHeading';
 import ListContact from '../components/lists/ListContact';
+import SEO from '../components/SEO';
 
 export default ({ data }) => {
     const doc = data.prismic.allContacts.edges.slice(0, 1).pop();
@@ -11,18 +13,22 @@ export default ({ data }) => {
     }
 
     const contactDetails = data.prismic.allGlobalss.edges[0].node.contact_details;
-    const { heading, copy } = doc.node;
+    const { seo_title, seo_description, heading, copy } = doc.node;
 
     return (
-        <article className="contact">
-            <div className="container">
-                <CopyHeading heading={heading} headingLarge={true} copy={copy} />
-            </div>
+        <>
+            <SEO title={RichText.asText(seo_title)} description={RichText.asText(seo_description)} />
 
-            <div className="container">
-                <ListContact classes="contact__details" items={contactDetails}/>
-            </div>
-        </article>
+            <article className="contact">
+                <div className="container">
+                    <CopyHeading heading={heading} headingLarge={true} copy={copy} />
+                </div>
+
+                <div className="container">
+                    <ListContact classes="contact__details" items={contactDetails} />
+                </div>
+            </article>
+        </>
     );
 };
 
@@ -34,6 +40,8 @@ export const query = graphql`
                     node {
                         heading
                         copy
+                        seo_title
+                        seo_description
                     }
                 }
             }

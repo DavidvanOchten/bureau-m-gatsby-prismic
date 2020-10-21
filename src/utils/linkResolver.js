@@ -1,6 +1,6 @@
 // https://prismic.io/docs/reactjs/beyond-the-api/link-resolving
 
-export const linkResolver = doc => {
+export const linkResolver = (doc) => {
     switch (doc.type) {
         // case 'page':
         //     return `/${doc.uid}`;
@@ -10,6 +10,9 @@ export const linkResolver = doc => {
 
         case 'specialism':
             return '/specialisme';
+
+        case 'about':
+            return '/over';
 
         case 'contact':
             return '/contact';

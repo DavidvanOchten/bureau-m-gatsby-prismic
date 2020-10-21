@@ -18,24 +18,22 @@ const Footer = ({ menuLinks, contactDetails }) => {
                 <ul className="footer__list">
                     {contactDetails.map((item, index) => (
                         <li className="footer__list-item" key={index}>
-                            {
-                                (item.link) ? (
-                                    <Fragment>
-                                        <span>{item.link_label[0].text}: </span>
-                                        <LinkExternal to={item.link} text={item.link_text[0].text} />
-                                    </Fragment>
-                                ) : (
-                                    <Fragment>
-                                        <span>{item.link_label[0].text}: </span>
-                                        <span>{item.link_text[0].text}</span>
-                                    </Fragment>
-                                )
-                            }
+                            {item.link ? (
+                                <Fragment>
+                                    <span>{item.link_label[0].text}: </span>
+                                    <LinkExternal to={item.link} text={item.link_text[0].text} />
+                                </Fragment>
+                            ) : (
+                                <Fragment>
+                                    <span>{item.link_label[0].text}: </span>
+                                    <span>{item.link_text[0].text}</span>
+                                </Fragment>
+                            )}
                         </li>
                     ))}
                 </ul>
 
-                <small className="footer__copyright">©  2020 — Bureau M juridisch advies</small>
+                <small className="footer__copyright">© 2020 — Bureau M juridisch advies</small>
             </div>
         </footer>
     );
@@ -86,6 +84,14 @@ const query = graphql`
                                         uid
                                     }
                                 }
+                                ... on PRISMIC_About {
+                                    type
+                                    seo_title
+                                    _meta {
+                                        type
+                                        uid
+                                    }
+                                }
                             }
                             link_text
                         }
@@ -97,11 +103,15 @@ const query = graphql`
 `;
 
 // https://github.com/birkir/gatsby-source-prismic-graphql/issues/77
-export default props => (
+export default (props) => (
     <StaticQuery
         query={`${query}`}
         render={({ prismic }) => (
-            <Footer menuLinks={prismic.allGlobalss.edges[0].node.menu} contactDetails={prismic.allGlobalss.edges[0].node.contact_details} {...props} />
+            <Footer
+                menuLinks={prismic.allGlobalss.edges[0].node.menu}
+                contactDetails={prismic.allGlobalss.edges[0].node.contact_details}
+                {...props}
+            />
         )}
     />
 );

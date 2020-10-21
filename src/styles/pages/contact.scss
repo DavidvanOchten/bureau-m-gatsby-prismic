@@ -6,7 +6,6 @@
     padding-bottom: rem($baseline * 3);
 }
 
-
 @include mq-wide {
     .contact {
         & .copy-heading {
@@ -20,8 +19,8 @@
     }
 
     .contact__details {
-        padding-right: rem($baseline * 3);
+        padding-right: grid('wide', 1, 18);
         padding-bottom: rem($baseline * 5);
-        padding-left: rem($baseline * 3);
+        padding-left: grid('wide', 1, 18);
     }
 }

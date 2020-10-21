@@ -1,0 +1,49 @@
+.copy-image {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: rem($baseline * 3);
+
+    font-size: rem(16);
+    line-height: rem($baseline);
+}
+
+.copy-image__container-text {
+    width: 100%;
+
+    & a {
+        margin-right: rem(12);
+        font-size: rem(26);
+    }
+
+    & p + p {
+        margin-top: rem($baseline);
+    }
+}
+
+.copy-image__image {
+    width: 100%;
+    margin-top: rem($baseline * 2);
+}
+
+@include mq-wide {
+    .copy-image {
+        flex-direction: row;
+        padding-bottom: rem($baseline * 5);
+    }
+
+    .copy-image__container-text {
+        width: grid('wide', 8, 18);
+        margin-left: grid('wide', 1, 18);
+        padding-bottom: rem($baseline);
+
+        & p {
+            margin-top: rem($baseline);
+        }
+    }
+
+    .copy-image__image {
+        width: grid('wide', 8, 18);
+        margin-top: 0;
+        object-fit: cover;
+    }
+}
